@@ -1,0 +1,17 @@
+#+TITLE: CMPUT 365
+
+
+* Bandit problem
+
+#+begin_src python :results output
+k = 10 # a number
+Q = [0 for _ in range(k)]
+N = [0 for _ in range(k)]
+
+while True:
+
+
+#+end_src
+
+#+RESULTS:
+: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
