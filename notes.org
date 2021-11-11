@@ -1,21 +1,61 @@
 #+TITLE: CMPUT 365
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 
-* Bandit problem
-
-#+begin_src python :results output
-k = 10 # a number
-Q = [0 for _ in range(k)]
-N = [0 for _ in range(k)]
-
-while True:
+* Sequential Decision Making
+- incremental update rule ::
+    \[Q_{n+1} = Q_n + \frac{1}{n} \left[R_n - Q_n\right]\]
+- exploration/exploitation tradeoff ::
+  + the agent wants to explore to get more accurate estimates of its valies, but the agent also wants to exploit to get more reward.
+  + however, it cannot do both
 
 
+* Markov Decision Process (MDP)
+- agent :: the learner and decision maker
+  + at each time step the agent takes an action
+  + in episodic tasks, the numner of steps in an episode is stochastic
+- reward hypothesis :: goals and purposes can be thought of as the maximization of the expected value of the cumulative sum of rewards recieved
+- a larger \(\gamma\) means that the agent is more far-sighted and considers rewards further in the future
+- continuous MDP when agent-environment interaction does not naturally break into sequence
+- episodic MDP when agent-environment interaction naturally breaks in to sequences
+  + each sequence begins independently of how the episode ended
+** Equations
+\[q_\pi(s, a) = \mathbb{E}[G_t | S_t = s, A_t = a]\]
+where \[G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \gamma^3 R_{t+4} \dots \]
+
+\[\sum_{k=0}^{\infty} \gamma^k = \frac{1}{1-\gamma}\]
+** Bellman Equations
+** Bellman Optimality Equation
+** Exercises
+
+*** 3.8
+Suppose \(\gamma=0.8\) and the sequence of rewards is \(R_1, R_2, R_3, R_4, R_5\).
+Work backwards and find \(G_0\)
+
+\[G_t = R_{t+1} + \gamma G_{t+1}\]
+\[G_0 = R_1 + \gamma(R_2 + \gamma(R_3 + \gamma(R_4 + \gamma(R_5 + \gamma \times 0))))\]
+#+begin_src python :results value
+r1, r2, r3, r4, r5 = -1, 2, 6, 3, 2
+y = 0.5
+return r1 + y * (r2 + y * (r3 + y * (r4 + y * (r5 + 0))))
 #+end_src
 
 #+RESULTS:
-: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+: 2.0
 
+**** 3.9
+same except now \(R_1=2\) and the rest is an infinite series of 7. Find G1 and G0
+#+begin_src python :results output
+r1, rest = 5, 10
+y = 0.8
+G1 = rest / (1-y)
+G0 = r1 + y * G1
+
+print(G0, G1)
+#+end_src
+
+#+RESULTS:
+: 45.000000000000014 50.000000000000014
 
 * Excercise 2.2
 * Practice Question
