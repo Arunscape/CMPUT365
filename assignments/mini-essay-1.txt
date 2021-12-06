@@ -4,3 +4,7 @@ Discuss how evolutionary methods are different from RL methods, and in what situ
 
 RL methods are better suited for applications where the previous state is important in determining what action should be taken in the next state. Although an evolutionary method could solve the problem, the RL method would likely converge on the optimal policy faster (unless the evolutionary method is parallelized: https://openai.com/blog/evolution-strategies/). Evolutionary methods can solve more general optimization problems than RL methods, however it is not always the best approach. For example, Reinforcement Learning works better than an evolutionary algorithm (genetic algorithm) for optimizing sustainable forest management: http://www.geog.leeds.ac.uk/groups/geocomp/2011/papers/rieser.pdf
 
+Graded by Subhojeet Pramanik
+80/100
+Structure: -1 (too long sentences)
+Grammar: -1
